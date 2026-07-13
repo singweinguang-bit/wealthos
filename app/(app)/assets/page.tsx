@@ -1,6 +1,6 @@
 import AssetTable from "@/components/assets/asset-table";
 import AddAssetDialog from "@/components/assets/add-asset-dialog";
-
+import SearchBar from "@/components/assets/search-bar";
 import { supabase } from "@/lib/supabase";
 
 export default async function AssetsPage() {
@@ -29,7 +29,10 @@ export default async function AssetsPage() {
 
         </div>
 
-        <AddAssetDialog />
+        <div className="flex items-center gap-4">
+          <SearchBar />
+          <AddAssetDialog />
+        </div>
 
       </div>
 

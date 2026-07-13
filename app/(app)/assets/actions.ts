@@ -44,3 +44,31 @@ export async function deleteAsset(formData: FormData) {
 
   revalidatePath("/assets");
 }
+
+export async function updateAsset(formData: FormData) {
+  const id = formData.get("id")?.toString() ?? "";
+
+  const name = formData.get("name")?.toString() ?? "";
+  const category = formData.get("category")?.toString() ?? "";
+  const currency = formData.get("currency")?.toString() ?? "";
+  const current_value = Number(formData.get("current_value"));
+  const liquidity = formData.get("liquidity")?.toString() ?? "";
+
+  const { error } = await supabase
+    .from("assets")
+    .update({
+      name,
+      category,
+      currency,
+      current_value,
+      liquidity,
+    })
+    .eq("id", id);
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  revalidatePath("/assets");
+}

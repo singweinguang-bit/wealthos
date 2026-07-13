@@ -66,7 +66,7 @@ export default function AssetTable({
 
               <td className="px-6 text-center">
                 <div className="flex justify-center gap-2">
-                  <EditAssetDialog />
+                  <EditAssetDialog asset={asset} />
                   <DeleteAssetButton id={asset.id} />
               </div>
               </td>
