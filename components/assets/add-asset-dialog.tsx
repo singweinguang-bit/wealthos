@@ -1,4 +1,7 @@
+
 "use client";
+import { createAsset } from "@/app/(app)/assets/actions";
+
 
 import { useState } from "react";
 
@@ -19,35 +22,58 @@ export default function AddAssetDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button>+ Add Asset</Button>
-      </DialogTrigger>
+      <DialogTrigger
+        render={
+          <Button>
+            + Add Asset
+          </Button>
+        }
+      />
 
       <DialogContent className="bg-neutral-900 border-neutral-800 text-white">
         <DialogHeader>
           <DialogTitle>Add Asset</DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-4">
+        <form
+          action={createAsset}
+          className="space-y-4"
+        >
 
-          <Input placeholder="Asset Name" />
+          <Input
+            name="name"
+            placeholder="Asset Name"
+          />
 
-          <Input placeholder="Category" />
+          <Input
+            name="category"
+            placeholder="Category"
+          />
 
-          <Input placeholder="Currency" />
+          <Input
+            name="currency"
+            placeholder="Currency"
+            defaultValue="MYR"
+          />
 
-          <Input placeholder="Current Value" />
+          <Input
+            name="current_value"
+            type="number"
+            placeholder="Current Value"
+          />
 
-          <Input placeholder="Liquidity" />
-
-          <Button
+          <Input
+            name="liquidity"
+            placeholder="Liquidity"
+          />
+         <Button
+            type="submit"
             className="w-full"
-            onClick={() => setOpen(false)}
           >
             Save
           </Button>
 
-        </div>
+        </form>
       </DialogContent>
     </Dialog>
   );

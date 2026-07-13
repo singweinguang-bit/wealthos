@@ -1,3 +1,6 @@
+import DeleteAssetButton from "./delete-asset-button";
+import EditAssetDialog from "./edit-asset-dialog";
+
 type Asset = {
   id: string;
   name: string;
@@ -32,6 +35,7 @@ export default function AssetTable({
             <th className="text-left">Liquidity</th>
 
             <th className="px-6 text-right">Value</th>
+<th className="px-6 text-center">Action</th>
 
           </tr>
 
@@ -58,6 +62,13 @@ export default function AssetTable({
 
               <td className="px-6 text-right font-semibold text-emerald-400">
                 RM {asset.current_value.toLocaleString()}
+              </td>
+
+              <td className="px-6 text-center">
+                <div className="flex justify-center gap-2">
+                  <EditAssetDialog />
+                  <DeleteAssetButton id={asset.id} />
+              </div>
               </td>
 
             </tr>
