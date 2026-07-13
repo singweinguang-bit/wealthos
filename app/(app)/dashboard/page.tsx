@@ -1,5 +1,6 @@
 import StatCard from "@/components/dashboard/stat-card";
 import DashboardHeader from "@/components/dashboard/dashboard-header";
+import NetWorthChart from "@/components/charts/net-worth-chart";
 
 export default function DashboardPage() {
   return (
@@ -30,6 +31,8 @@ export default function DashboardPage() {
           title="Cash"
           value="RM120K"
         />
+
+        <NetWorthChart />
       </div>
     </main>
   );
